@@ -239,10 +239,10 @@ class ControlsTab {
 
     @objc static func vimKeysEnabledCallback(_ sender: NSControl) {
         let keyActions = [
-            "h": "vimCycleLeft",
+            "j": "vimCycleLeft",
             "l": "vimCycleRight",
-            "k": "vimCycleUp",
-            "j": "vimCycleDown"
+            "i": "vimCycleUp",
+            "k": "vimCycleDown"
         ]
         if (sender as! Switch).state == .on {
             if isClearVimKeysSuccessful() {
@@ -257,7 +257,7 @@ class ControlsTab {
     }
 
     private static func isClearVimKeysSuccessful() -> Bool {
-        let vimKeys = ["h", "l", "j", "k"]
+        let vimKeys = ["j", "l", "i", "k"]
         var conflicts = [String: String]()
         shortcuts.forEach {
             let keymap = $1.shortcut.characters
