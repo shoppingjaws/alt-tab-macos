@@ -1,0 +1,15 @@
+on:
+  push:
+    branches:
+      - master
+env:
+  BUILD_DIR: ${{ github.workspace }}
+  XCODE_BUILD_PATH: DerivedData/Build/Products/Release
+  APP_NAME: AltTab
+jobs:
+  build:
+    runs-on: macos-13 # Intel VM; see https://github.com/actions/runner-images/tree/main
+    steps:
+      - uses: actions/checkout@v3
+      - run: sudo xcode-select -s /Applications/Xcode_14.2.app/Contents/Developer
+      - run: scripts/build_app.sh
